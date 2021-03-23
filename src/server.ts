@@ -1,10 +1,9 @@
 import express from 'express'; 
+import routes from './routes';
 
 const app = express();
 
-app.get('/pong', (req, res) => {
-    return res.json({ pong: "ping" });
-});
+app.use(routes);
 
 app.listen(5000, ()=> {
     console.log('Server Started!');
