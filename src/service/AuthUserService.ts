@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm'
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
+//variaveis de configuração
 import authConfig from '../config/auth'
 
 import User from '../models/User'
@@ -21,6 +22,7 @@ class AuthUserService {
 
         const user  = await usersRepository.findOne ({where: { email}});
 
+        //verificando se o usuario esta devidamente cadastrado
         if(!user){
             throw new Error('Email ou senha estão incorretos')
         };
@@ -31,6 +33,7 @@ class AuthUserService {
             throw new Error('Email ou senha estão incorretos')
         };
 
+        //Fazendo a autenticação do usuario 
         const {secret, expiresIn} = authConfig.jwt
 
         const token = sign({}, secret,{

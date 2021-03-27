@@ -9,6 +9,7 @@ interface TokenPayload {
     sub: string
 }
 
+//esse MW serve para bloquear as rotas para usuarios não "logados"
 export default function ensureAuth(
     req: Request, 
     res: Response, 
@@ -16,12 +17,14 @@ export default function ensureAuth(
     ): void {
     const authHeader = req.headers.authorization;
 
+    //Vefificando se o usuario esta autenticado
     if(!authHeader){
         throw new Error("O token JWT esta faltando")
     }   
 
     const [, token] = authHeader.split(' ');
 
+    //dando acesso a rota
     try{
         const decoded = verify(token, authConfig.jwt.secret)
 
@@ -30,7 +33,7 @@ export default function ensureAuth(
         request.user = {
             id: sub
         }
-
+        //seguindo para a rota
         return next();
     }catch{
         throw new Error('O token JWT e invalido')

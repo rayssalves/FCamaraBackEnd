@@ -3,6 +3,7 @@ import {MigrationInterface, QueryRunner, Table} from "typeorm";
 export default class CreateUsers1616813934688 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
+        //migration para gerar a tabela de usuario
         await queryRunner.createTable(new Table({
             name: 'users',
             columns: [

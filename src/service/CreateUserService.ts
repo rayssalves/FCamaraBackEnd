@@ -14,6 +14,7 @@ class CreateUserService{
     public async exucute({ name, email, pass }: Request): Promise<User>{
         const usersRepository = getRepository(User);
 
+        //vendo se o email ja esta em uso
         const checkUserExist = await usersRepository.findOne({ 
             where: { email }
         })
@@ -21,8 +22,10 @@ class CreateUserService{
             throw new Error('O email ja esta em uso.');
         }
 
+        //criptografando senha
         const passHash = await hash(pass, 8)
 
+        //Salvando ususario no banco
         const user = await usersRepository.create({
             name,
             email,

@@ -9,6 +9,7 @@ usersRouter.post('/', async (req, res) => {
     try{ 
         const { name, email, pass} = req.body; 
 
+        //Service com as regras de negocio 
         const createUser = new CreateUserService();
 
         const user = await createUser.exucute({ name, email, pass });
