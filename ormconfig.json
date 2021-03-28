@@ -4,7 +4,7 @@
     "port": 5432,
     "username": "postgres",
     "password": "741852963",
-    "database": "fHackthon",
+    "database": "fcamara_hacka",
     "entities": [
         "./src/models/*.ts"
     ],

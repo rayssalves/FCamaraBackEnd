@@ -11,7 +11,7 @@ interface Request {
 }
 
 class CreateUserService{
-    public async exucute({ name, email, pass }: Request): Promise<User>{
+    public async execute({ name, email, pass }: Request): Promise<User>{
         const usersRepository = getRepository(User);
 
         //vendo se o email ja esta em uso
