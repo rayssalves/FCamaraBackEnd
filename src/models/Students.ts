@@ -25,9 +25,6 @@ class Students {
     @Column()
     material_list: string;
     
-    @Column()
-    creator_user_id: string;
-    
     @CreateDateColumn()
     created_at: Date
 }

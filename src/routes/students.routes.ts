@@ -21,8 +21,7 @@ studentsRouter.post('/', async (req, res) => {
             nome,
             age,
             address,
-            material_list,
-            creator_user_id
+            material_list
         } = req.body; 
 
         //Service com as regras de negocio 
@@ -33,8 +32,8 @@ studentsRouter.post('/', async (req, res) => {
             nome,
             age,
             address,
-            material_list,
-            creator_user_id });
+            material_list 
+        });
 
         return res.json(student);
     }catch(err){

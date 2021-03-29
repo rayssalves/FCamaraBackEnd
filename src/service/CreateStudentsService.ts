@@ -9,11 +9,10 @@ interface Request {
     age: number;
     address: string;
     material_list: string;
-    creator_user_id: string;
 }
 
 class StudentsService{
-    public async execute({create_user_id, nome, age, address, material_list, creator_user_id }: Request): Promise<Students>{
+    public async execute({create_user_id, nome, age, address, material_list }: Request): Promise<Students>{
         const studentsRepository = getRepository(Students);
 
         //vendo se o estudante ja existe
@@ -31,7 +30,7 @@ class StudentsService{
             age,
             address,
             material_list,
-            creator_user_id
+            
         });
 
         await studentsRepository.save(student);
