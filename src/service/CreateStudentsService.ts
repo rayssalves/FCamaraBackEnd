@@ -17,7 +17,7 @@ class StudentsService{
 
         //vendo se o estudante ja existe
         const checkStudentsExist = await studentsRepository.findOne({ 
-            where: { nome, age, address }
+            where: { create_user_id, nome, age, address }
         })
         if (checkStudentsExist){
             throw new Error('O estudante já existe.');
