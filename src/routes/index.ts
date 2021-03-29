@@ -13,7 +13,7 @@ const routes =  Router();
 
 routes.use('/user', usersRouter)
 routes.use('/session', sessionRouter)
-routes.use('/students', studentsRouter)
+routes.use('/students', ensureAuth, studentsRouter)
 
 routes.get('/pong', ensureAuth,(req, res) => {
     console.log(req.user)
