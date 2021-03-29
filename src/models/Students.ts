@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, JoinColumn} from 'typeorm';
 import User from './User';
 
 @Entity('students')
@@ -11,6 +11,10 @@ class Students {
 
     @Column()
     nome: string;
+
+    @ManyToOne(()=> User)
+    @JoinColumn({name: 'create_user_id'})
+    user: User;
 
     @Column()
     age: number;
