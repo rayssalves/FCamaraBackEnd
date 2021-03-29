@@ -1,10 +1,20 @@
 import { Router } from 'express';
-
+import { getRepository } from 'typeorm'
+import Students from '../models/Students'
 
 import StudentsService from '../service/CreateStudentsService'
 
 const studentsRouter = Router();
 
+studentsRouter.get('/', async (req, res) => {
+    const studentsRepository = getRepository(Students)
+
+    const AllStudent = await studentsRepository.find()
+
+    return res.json(AllStudent)
+})
+
+//rota para cadastrar o student
 studentsRouter.post('/', async (req, res) => {
     try{ 
         const { create_user_id,

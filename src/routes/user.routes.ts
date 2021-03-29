@@ -7,7 +7,7 @@ const usersRouter = Router();
 
 usersRouter.post('/', async (req, res) => {
     try{ 
-        const { name, email, pass} = req.body; 
+        const { name, email, pass} = await req.body; 
 
         //Service com as regras de negocio 
         const createUser = new CreateUserService();
