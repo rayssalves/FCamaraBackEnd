@@ -1,5 +1,4 @@
 import { getRepository } from 'typeorm'
-import { hash } from 'bcryptjs'
 
 import Students from '../models/Students';
 

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 
-import StudentsService from '../service/StudentsService'
+import StudentsService from '../service/CreateStudentsService'
 
 const studentsRouter = Router();
 
