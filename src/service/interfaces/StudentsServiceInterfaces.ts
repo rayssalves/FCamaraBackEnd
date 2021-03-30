@@ -4,4 +4,5 @@ export interface CreateStudentInterface {
     age: number;
     address: string;
     material_list: string;
+    contact: string;
 }
