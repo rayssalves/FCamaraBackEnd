@@ -6,7 +6,7 @@
     "password": "741852963",
     "database": "fcamara_hacka",
     "entities": [
-        "./src/models/*.ts"
+        "./src/database/models/*.ts"
     ],
     "migrations": [
         "./src/database/migrations/*.ts"

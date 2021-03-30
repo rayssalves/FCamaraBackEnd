@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm'
 
-import Students from '../models/Students';
+import Students from '../database/models/Students';
 
 
 interface Request {

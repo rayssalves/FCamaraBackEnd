@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getRepository } from 'typeorm'
-import Students from '../models/Students'
+import Students from '../database/models/Students'
 
 import StudentsService from '../service/CreateStudentsService'
 

@@ -4,7 +4,7 @@ import { sign } from 'jsonwebtoken'
 //variaveis de configuração
 import authConfig from '../config/auth'
 
-import User from '../models/User'
+import User from '../database/models/User'
 
 interface Request {
     email: string;
