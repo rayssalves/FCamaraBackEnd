@@ -27,6 +27,9 @@ class Students {
     
     @CreateDateColumn()
     created_at: Date
+
+    @Column()
+    contact: string
 }
 
 export default Students;
