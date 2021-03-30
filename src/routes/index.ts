@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import ensureAuth from '../middlewares/ensureAuth'
+//import ensureAuth from '../middlewares/ensureAuth'
 
 
 import usersRouter from '../routes/user.routes'
@@ -11,13 +11,13 @@ const routes =  Router();
 
 routes.use('/user', usersRouter)
 routes.use('/session', sessionRouter)
-routes.use('/students',ensureAuth, studentsRouter)
-routes.use('/students/specific',ensureAuth , studentsRouter)
+routes.use('/students', studentsRouter)
 
+/*
 routes.get('/pong', ensureAuth,(req, res) => {
     console.log(req.user)
     return res.json({ pong: "ping" });
-});
+});*/
 
 export default routes;
 

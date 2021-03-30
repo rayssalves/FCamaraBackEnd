@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getRepository } from 'typeorm'
 import Students from '../database/models/Students'
+import ensureAuth from '../middlewares/ensureAuth';
 
 import StudentsService from '../service/CreateStudentsService'
 
@@ -14,7 +15,7 @@ studentsRouter.get('/', async (req, res) => {
     return res.json(AllStudent)
 })
 
-studentsRouter.get('/specific', async (req, res) => {
+studentsRouter.get('/specific',ensureAuth, async (req, res) => {
     const studentsRepository = getRepository(Students)
 
     const {create_user_id} = req.body
@@ -23,7 +24,7 @@ studentsRouter.get('/specific', async (req, res) => {
     return res.json(SpecificStudents)
 })
 
-studentsRouter.delete('/', async (req, res) => {
+studentsRouter.delete('/', ensureAuth,async (req, res) => {
   
     const studentsRepository = getRepository(Students)
 
@@ -37,7 +38,7 @@ studentsRouter.delete('/', async (req, res) => {
 })
 
 //rota para cadastrar o student
-studentsRouter.post('/', async (req, res) => {
+studentsRouter.post('/', ensureAuth,async (req, res) => {
     try{ 
         const { create_user_id,
             nome,
