@@ -2,16 +2,10 @@ import { getRepository } from 'typeorm'
 import { hash } from 'bcryptjs'
 
 import User from '../database/models/User'
-
-
-interface Request {
-    name: string;
-    email: string;
-    pass: string;
-}
+import {CreateUserInterface} from './interfaces/UserServiceInterfaces'
 
 class CreateUserService{
-    public async execute({ name, email, pass }: Request): Promise<User>{
+    public async execute({ name, email, pass }: CreateUserInterface): Promise<User>{
         const usersRepository = getRepository(User);
 
         //vendo se o email ja esta em uso

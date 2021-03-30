@@ -6,18 +6,11 @@ import authConfig from '../config/auth'
 
 import User from '../database/models/User'
 
-interface Request {
-    email: string;
-    pass: string;
-}
+import {UserAuth, ResponseUserAuth} from './interfaces/UserServiceInterfaces'
 
-interface Response {
-    user:User
-    token:string
-}
 
 class AuthUserService {
-    public async execute({ email, pass }: Request): Promise<Response>{
+    public async execute({ email, pass }: UserAuth): Promise<ResponseUserAuth>{
         const usersRepository = getRepository(User);
 
         const user  = await usersRepository.findOne ({where: { email}});
