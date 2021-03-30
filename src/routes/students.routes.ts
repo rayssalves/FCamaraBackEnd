@@ -14,6 +14,15 @@ studentsRouter.get('/', async (req, res) => {
     return res.json(AllStudent)
 })
 
+studentsRouter.get('/specific', async (req, res) => {
+    const studentsRepository = getRepository(Students)
+
+    const {create_user_id} = req.body
+    const SpecificStudents = await studentsRepository.find({where:{create_user_id}})
+
+    return res.json(SpecificStudents)
+})
+
 studentsRouter.delete('/', async (req, res) => {
   
     const studentsRepository = getRepository(Students)
