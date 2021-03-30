@@ -14,6 +14,19 @@ studentsRouter.get('/', async (req, res) => {
     return res.json(AllStudent)
 })
 
+studentsRouter.delete('/', async (req, res) => {
+  
+    const studentsRepository = getRepository(Students)
+
+    const { id_student } = req.body
+
+    const student = await studentsRepository.find({ where:{ id: id_student } })
+    
+    await studentsRepository.remove(student)
+    
+    return res.send('ok')
+})
+
 //rota para cadastrar o student
 studentsRouter.post('/', async (req, res) => {
     try{ 
