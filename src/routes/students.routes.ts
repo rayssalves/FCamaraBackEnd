@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getRepository } from 'typeorm'
+import { getRepository, Like } from 'typeorm'
 import Students from '../database/models/Students'
 import ensureAuth from '../middlewares/ensureAuth';
 
@@ -7,6 +7,8 @@ import StudentsService from '../service/CreateStudentsService'
 
 const studentsRouter = Router();
 
+
+//Pegando todos os Stundets que existem
 studentsRouter.get('/', async (req, res) => {
     const studentsRepository = getRepository(Students)
 
@@ -15,6 +17,21 @@ studentsRouter.get('/', async (req, res) => {
     return res.json(AllStudent)
 })
 
+studentsRouter.get('/search', async (req, res)=>{
+    const studentsRepository = getRepository(Students)
+
+    const {searchParameters} = req.body
+    const searchResults = await studentsRepository.find({
+    where:[
+        { address: Like('%'+searchParameters+'%') }, 
+        { nome: Like('%'+searchParameters+'%') }
+        ]
+    })
+
+    return res.json(searchResults)
+})
+
+//Pegando todos os Students de um unico usuario 
 studentsRouter.get('/specific',ensureAuth, async (req, res) => {
     const studentsRepository = getRepository(Students)
 
@@ -24,6 +41,7 @@ studentsRouter.get('/specific',ensureAuth, async (req, res) => {
     return res.json(SpecificStudents)
 })
 
+//Deletando um student
 studentsRouter.delete('/', ensureAuth,async (req, res) => {
   
     const studentsRepository = getRepository(Students)
