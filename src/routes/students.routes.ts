@@ -4,6 +4,7 @@ import Students from '../database/models/Students'
 import ensureAuth from '../middlewares/ensureAuth';
 
 import StudentsService from '../service/CreateStudentsService'
+import SearchStudentsService from '../service/SearchStudentsService'
 
 const studentsRouter = Router();
 
@@ -18,15 +19,10 @@ studentsRouter.get('/', async (req, res) => {
 })
 
 studentsRouter.get('/search', async (req, res)=>{
-    const studentsRepository = getRepository(Students)
 
     const {searchParameters} = req.body
-    const searchResults = await studentsRepository.find({
-    where:[
-        { address: Like('%'+searchParameters+'%') }, 
-        { nome: Like('%'+searchParameters+'%') }
-        ]
-    })
+    const StudentsService = new SearchStudentsService()
+    const searchResults = await StudentsService.execute(searchParameters)
 
     return res.json(searchResults)
 })

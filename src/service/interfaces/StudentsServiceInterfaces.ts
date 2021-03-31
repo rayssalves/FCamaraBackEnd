@@ -6,3 +6,7 @@ export interface CreateStudentInterface {
     material_list: string;
     contact: string;
 }
+
+export interface SearchStudentsInterface {
+    searchParameters: string;
+}
