@@ -13,9 +13,9 @@ class SearchStudentsService{
                 { address: Like('%'+searchParameters+'%') }, 
                 { nome: Like('%'+searchParameters+'%') },
                 { material_list: Like('%'+searchParameters+'%') }
-                ]
+                ],
             })
-
+ 
             return searchResults
     }
 }

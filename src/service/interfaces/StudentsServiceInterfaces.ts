@@ -9,4 +9,6 @@ export interface CreateStudentInterface {
 
 export interface SearchStudentsInterface {
     searchParameters: string;
+    skipPagination: number;
+    takeMax: number;
 }
