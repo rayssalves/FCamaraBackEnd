@@ -28,10 +28,10 @@ studentsRouter.get('/search', async (req, res)=>{
 })
 
 //Pegando todos os Students de um unico usuario 
-studentsRouter.get('/specific',ensureAuth, async (req, res) => {
+studentsRouter.get('/specific/:create_user_id',ensureAuth, async (req, res) => {
     const studentsRepository = getRepository(Students)
 
-    const {create_user_id} = req.body
+    const {create_user_id} = req.params
     const SpecificStudents = await studentsRepository.find({where:{create_user_id}})
 
     return res.json(SpecificStudents)
