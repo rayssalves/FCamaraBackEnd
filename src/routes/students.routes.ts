@@ -5,16 +5,16 @@ import ensureAuth from '../middlewares/ensureAuth';
 
 import StudentsService from '../service/CreateStudentsService'
 import SearchStudentsService from '../service/SearchStudentsService'
+import AllStudentsService from '../service/AllStudentService'
 
 const studentsRouter = Router();
 
 
 //Pegando todos os Stundets que existem
 studentsRouter.get('/', async (req, res) => {
-    const studentsRepository = getRepository(Students)
-
-    const AllStudent = await studentsRepository.find()
-
+ 
+    const StudentsService = new AllStudentsService()
+    const AllStudent = await StudentsService.execute()
     return res.json(AllStudent)
 })
 

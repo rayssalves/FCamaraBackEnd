@@ -12,8 +12,6 @@ class SearchStudentsService{
         {
         const studentsRepository = getRepository(Students);
         
-        console.log(searchParameters)
-        
         const getAllResults = await studentsRepository.find({
             where:[
                 { address: Like('%'+searchParameters+'%') }, 
