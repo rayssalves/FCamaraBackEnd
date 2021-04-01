@@ -20,9 +20,9 @@ studentsRouter.get('/', async (req, res) => {
 
 studentsRouter.get('/search', async (req, res)=>{
 
-    const {searchParameters} = req.body
+    const {searchParameters, skipPagination, takeMax} = req.body
     const StudentsService = new SearchStudentsService()
-    const searchResults = await StudentsService.execute(searchParameters)
+    const searchResults = await StudentsService.execute({searchParameters, skipPagination, takeMax})
 
     return res.json(searchResults)
 })
